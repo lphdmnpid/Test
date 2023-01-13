@@ -10,14 +10,26 @@ def two(a):
 
 def one(*args,**kwargs):
     #Считает сумму квадратов
+    
+    def check(a):
+        #Проверка
+        try:
+            int(a)
+        except:
+            print("TypeError")
+            exit()
+    
     ans=0
     for i in args:
-        ans+=i**2
+        check(i)
+        ans+=int(i)**2
     for i in kwargs.items():
-        ans+=i[1]**2
+        check(i[1])
+        ans+=int(i[1])**2
     return ans
 
 print(one(1,2,3,6,one=5,two=3))
 
 three=two(one)
 three(1,2,3,6,one=5,two=3)
+one("four")
